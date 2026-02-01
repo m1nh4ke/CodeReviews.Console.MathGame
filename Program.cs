@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Diagnostics;
 
 // Boolean to determine whether to exit the program
@@ -58,7 +57,7 @@ void ShowHistory()
     Console.Write("\n");
 }
 
-string getDifficulty()
+string GetDifficulty()
 {
     // Get current difficulty
     string currentDifficulty = "";
@@ -80,7 +79,7 @@ void ChangeDifficulty()
     Console.WriteLine("\t2. Normal");
     Console.WriteLine("\t3. Hard");
     Console.WriteLine("\t4. ASIAN!");
-    Console.WriteLine($"Current difficulty: {getDifficulty()}");
+    Console.WriteLine($"Current difficulty: {GetDifficulty()}");
 
     string userChoice = Console.ReadLine() ?? "";
     userChoice = userChoice.Trim().ToLower();
@@ -109,7 +108,7 @@ void ChangeDifficulty()
             difficulty = 10000;
             break;
     }
-    Console.WriteLine($"Your new difficulty is {getDifficulty()}\n");
+    Console.WriteLine($"Your new difficulty is {GetDifficulty()}\n");
 }
 
 int MathQuestion(int firstNumber, int secondNumber, char operation)
@@ -135,7 +134,7 @@ int MathQuestion(int firstNumber, int secondNumber, char operation)
     return result;
 }
 
-void startGame(char operation)
+void StartGame(char operation)
 {
     // Variables to generate questions
     Random generateNumber = new Random();
@@ -224,23 +223,23 @@ while(exit == false)
     {
         case 1:
             operation = '+';
-            startGame(operation);
+            StartGame(operation);
             break;  
         case 2:
             operation = '-';
-            startGame(operation);
+            StartGame(operation);
             break;  
         case 3:
             operation = '*';
-            startGame(operation);
+            StartGame(operation);
             break;  
         case 4:
             operation = '/';
-            startGame(operation);
+            StartGame(operation);
             break;  
         case 5:
             operation = 'r';
-            startGame(operation);
+            StartGame(operation);
             break;  
         case 6:
             ShowHistory();
