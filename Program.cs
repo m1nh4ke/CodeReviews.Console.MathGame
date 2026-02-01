@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Diagnostics;
 
 // Boolean to determine whether to exit the program
@@ -27,7 +27,8 @@ void ShowMenu()
 // Get user's input and return an integer to choose operation
 int GetUserInput()
 {
-    string input = Console.ReadLine().Trim().ToLower();
+    string input = Console.ReadLine() ?? "";
+    input = input.Trim().ToLower();
     int choice;
 
     try
@@ -81,7 +82,8 @@ void ChangeDifficulty()
     Console.WriteLine("\t4. ASIAN!");
     Console.WriteLine($"Current difficulty: {getDifficulty()}");
 
-    string userChoice = Console.ReadLine().Trim().ToLower();
+    string userChoice = Console.ReadLine() ?? "";
+    userChoice = userChoice.Trim().ToLower();
     int newDifficulty;
     bool getUserChoice = int.TryParse(userChoice, out newDifficulty);
 
@@ -181,16 +183,17 @@ void startGame(char operation)
         int res = MathQuestion(first, second, operation);
         Console.Write($"{first} {operation} {second} = ");
         string? answer = Console.ReadLine();
-        try
-        {
-            int userAnswer = int.Parse(answer);
-            correctAnswer = userAnswer.Equals(res);
-        }
-        catch
+        
+        int userAnswer; 
+        bool getUserAnswer = int.TryParse(answer, out userAnswer);
+        correctAnswer = userAnswer.Equals(res);
+        
+        if (getUserAnswer == false)
         {
             Console.WriteLine("Invalid input.\nYou won't have any point for this answer!\n");
             correctAnswer = false;
         }
+        
         if(correctAnswer == true)
         {
             userPoint += 1;
